@@ -1,0 +1,353 @@
++--------------------+
+|                    |
+|       Task 1       |
+|                    |
++--------------------+
+
+
+import java.util.*;
+
+public class Task1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int input = sc.nextInt();
+        int totalCol = 2 * input - 1;
+
+        // Upper half of the rhombus
+        for (int row = 1; row <= input; row++) {
+            int width = 2 * row - 1;
+
+            // For spaces
+            for (int s = 1; s <= (totalCol - width) / 2; s++) {
+                System.out.print("  ");
+            }
+            // For stars
+            for (int star = 1; star <= width; star++) {
+                System.out.print(star + " ");
+            }
+            System.out.println();
+        }
+        // Lower half of the rhombus
+        for (int row = input - 1; row >= 1; row--) {
+            int width = 2 * row - 1;
+            // For spaces
+            for (int s = 1; s <= (totalCol - width) / 2; s++) {
+                System.out.print("  ");
+            }
+            // For stars
+            for (int star = 1; star <= width; star++) {
+                System.out.print(star + " ");
+            }
+            System.out.println();
+        }
+    }
+
+}
+
+
+
+================================================================================================================================================================
+
+
+
++--------------------+
+|                    |
+|       Task 2       |
+|                    |
++--------------------+
+
+
+import java.util.*;
+
+public class Task2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        for (int row = 1; row <= n; row++) {
+
+            for (int space = 1; space <= n - row; space++) {
+                System.out.print(" ");
+            }
+
+            if (row == 1) {
+                System.out.println(n);
+                continue;
+            }
+
+            if (row == n) {
+                for (int col = 1; col <= n; col++) {
+                    System.out.print(col);
+                }
+                System.out.println();
+                continue;
+            }
+
+            System.out.print(n - row + 1);
+
+            for (int space = 1; space <= row - 2; space++) {
+                System.out.print(" ");
+            }
+
+            System.out.println(n);
+        }
+
+        sc.close();
+
+    }
+}
+
+
+
+================================================================================================================================================================
+
+
+
++--------------------+
+|                    |
+|       Task 3       |
+|                    |
++--------------------+
+
+
+import java.util.Scanner;
+
+public class Task3 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int max = 2 * n - 1;
+
+        for (int row = 1; row <= n; row++) {
+            int width = 2 * row - 1;
+            int spaces = (max - width) / 2;
+
+            for (int i = 0; i < spaces; i++) {
+                System.out.print(" ");
+            }
+
+            if (row == 1) {
+                System.out.println(1);
+                continue;
+            }
+
+            if (row == n) {
+                for (int col = 1; col <= max; col++) {
+                    System.out.print(col);
+                }
+                System.out.println();
+                continue;
+            }
+
+            System.out.print(1);
+
+            int gap = width - 2;
+            for (int i = 0; i < gap; i++) {
+                System.out.print(" ");
+            }
+
+            System.out.println(2 * row - 1);
+        }
+
+        sc.close();
+    }
+}
+
+
+
+================================================================================================================================================================
+
+
+
++--------------------+
+|                    |
+|       Task 4       |
+|                    |
++--------------------+
+
+
+import java.util.Scanner;
+
+public class Task4 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int total = 2 * n - 1;
+
+        for (int row = 1; row <= total; row++) {
+            
+            int level;
+            if (row <= n) {
+                level = row;
+            } else {
+                level = 2 * n - row;
+            }
+
+            int spaces = n - level;
+
+            for (int i = 0; i < spaces; i++) {
+                System.out.print(" ");
+            }
+
+            if (level == 1) {
+                System.out.println(1);
+            } else {
+                System.out.print(1);
+
+                int gap = 2 * level - 3;
+
+                for (int i = 0; i < gap; i++) {
+                    System.out.print(" ");
+                }
+
+                int num = 2 * level - 1;
+                System.out.println(num);
+            }
+        }
+
+        sc.close();
+    }
+}
+
+
+================================================================================================================================================================
+
+
++--------------------+
+|                    |
+|       Task 5       |
+|                    |
++--------------------+
+
+
+import java.util.Scanner;
+
+public class Task5 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int max = 2 * n - 1;
+
+        for (int row = 1; row <= n; row++) {
+            int width = 2 * row - 1;
+            int spaces = (max - width) / 2;
+
+            for (int i = 0; i < spaces; i++) {
+                System.out.print(" ");
+            }
+
+            for (int col = 1; col <= row; col++) {
+                System.out.print(col);
+            }
+
+            for (int col = row - 1; col >= 1; col--) {
+                System.out.print(col);
+            }
+
+            System.out.println();
+        }
+
+        sc.close();
+    }
+}
+
+
+
+
+================================================================================================================================================================
+
+
++--------------------+
+|                    |
+|       Task 6       |
+|                    |
++--------------------+
+
+import java.util.Scanner;
+
+public class Task6 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int max = 2 * n - 1;
+
+        for (int row = n; row >= 1; row--) {
+            int width = 2 * row - 1;
+            int spaces = (max - width) / 2;
+
+            for (int i = 0; i < spaces; i++) {
+                System.out.print(" ");
+            }
+
+            for (int col = 1; col <= row; col++) {
+                System.out.print(col);
+            }
+
+            for (int col = row - 1; col >= 1; col--) {
+                System.out.print(col);
+            }
+
+            System.out.println();
+        }
+
+        sc.close();
+    }
+}
+
+
+
+================================================================================================================================================================
+
+
++--------------------+
+|                    |
+|       Task 7       |
+|                    |
++--------------------+
+
+
+import java.util.Scanner;
+
+public class Task7 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int mid = (n + 1) / 2;
+
+        for (int row = 1; row <= n; row++) {
+            int spaces;
+            if (row <= mid) {
+                spaces = row - 1;
+            } else {
+                spaces = n - row;
+            }
+
+            for (int i = 0; i < spaces; i++) {
+                System.out.print(" ");
+            }
+
+            int width = n - 2 * spaces;
+            for (int col = 1; col <= width; col++) {
+                System.out.print(col);
+            }
+
+            System.out.println();
+        }
+
+        sc.close();
+    }
+}
+
+
+================================================================================================================================================================
