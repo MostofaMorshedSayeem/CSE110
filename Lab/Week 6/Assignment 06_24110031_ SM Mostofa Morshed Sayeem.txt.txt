@@ -1,0 +1,287 @@
++--------------------+
+|                    |
+|       Task 1       |
+|                    |
++--------------------+
+
+import java.util.Scanner;
+
+public class Task1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Message: ");
+        String message = sc.nextLine();
+
+        int maxPin = 0;
+
+        for (int i = 0; i < message.length() - 1; i++) {
+            char first = message.charAt(i);
+            char second = message.charAt(i + 1);
+
+            if (first >= '0' && first <= '9' && second >= '0' && second <= '9') {
+                int twoDigit = (first - '0') * 10 + (second - '0');
+
+                if (twoDigit > maxPin) {
+                    maxPin = twoDigit;
+                }
+            }
+        }
+
+        System.out.println("2-Digit PIN: " + maxPin);
+        sc.close();
+    }
+}
+
+
+================================================================================================================================================================
+
+
+
++--------------------+
+|                    |
+|       Task 2       |
+|                    |
++--------------------+
+
+import java.util.*;
+
+public class Task2 {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        String s = sc.nextLine();
+
+        String vowels = "";
+
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'A' || ch == 'E' || ch == 'I'
+                    || ch == 'O' || ch == 'U') {
+                vowels = vowels + ch;
+            }
+        }
+
+        String result = "";
+        int index = vowels.length() - 1;
+
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'A' || ch == 'E' || ch == 'I'
+                    || ch == 'O' || ch == 'U') {
+                result = result + vowels.charAt(index);
+                index--;
+            } else {
+                result = result + ch;
+            }
+        }
+
+        System.out.println(result);
+        sc.close();
+    }
+}
+
+
+================================================================================================================================================================
+
+
+
++--------------------+
+|                    |
+|       Task 3       |
+|                    |
++--------------------+
+
+import java.util.*;
+
+public class Task3 {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Names of the spells:");
+        System.out.println();
+
+        String longestSpell = "";
+
+        while (true) {
+            String input = sc.nextLine();
+
+            if (input.equals("stop")) {
+                break;
+            }
+
+            String cleanedSpell = "";
+            for (int i = 0; i < input.length(); i++) {
+                char ch = input.charAt(i);
+                if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
+                    if (ch >= 'a' && ch <= 'z') {
+                        ch = (char) (ch - 32);
+                    }
+                    cleanedSpell = cleanedSpell + ch;
+                }
+            }
+
+            if (cleanedSpell.length() > longestSpell.length()) {
+                longestSpell = cleanedSpell;
+            }
+        }
+
+        int powerLevel = 0;
+        for (int i = 0; i < longestSpell.length(); i++) {
+            powerLevel = powerLevel + (int) longestSpell.charAt(i);
+        }
+
+        System.out.println("Largest Spell : " + longestSpell);
+        System.out.println("Power Level : " + powerLevel);
+
+        sc.close();
+    }
+}
+
+
+================================================================================================================================================================
+
+
+
++--------------------+
+|                    |
+|       Task 4       |
+|                    |
++--------------------+
+
+import java.util.*;
+
+public class Task4 {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Fan Message: ");
+        String message = sc.nextLine();
+
+        String lowerMessage = "";
+        for (int i = 0; i < message.length(); i++) {
+            char ch = message.charAt(i);
+            if (ch >= 'A' && ch <= 'Z') {
+                ch = (char)(ch + 32);
+            }
+            lowerMessage = lowerMessage + ch;
+        }
+
+        int madridCount = 0;
+        int cityCount = 0;
+
+        for (int i = 0; i <= lowerMessage.length() - 6; i++) {
+            String word = "";
+            for (int j = i; j < i + 6; j++) {
+                word = word + lowerMessage.charAt(j);
+            }
+            if (word.equals("madrid")) {
+                madridCount++;
+            }
+        }
+
+        for (int i = 0; i <= lowerMessage.length() - 4; i++) {
+            String word = "";
+            for (int j = i; j < i + 4; j++) {
+                word = word + lowerMessage.charAt(j);
+            }
+            if (word.equals("city")) {
+                cityCount++;
+            }
+        }
+
+        String supporter = "";
+        if (madridCount > cityCount) {
+            supporter = "Madrid Supporter";
+        } else if (cityCount > madridCount) {
+            supporter = "City Supporter";
+        } else {
+            supporter = "Neutral";
+        }
+
+        String sentiment = "";
+        boolean hasClose = false;
+        boolean hasDestroy = false;
+
+        for (int i = 0; i <= lowerMessage.length() - 5; i++) {
+            String word = "";
+            for (int j = i; j < i + 5; j++) {
+                word = word + lowerMessage.charAt(j);
+            }
+            if (word.equals("close")) {
+                hasClose = true;
+            }
+        }
+
+        for (int i = 0; i <= lowerMessage.length() - 7; i++) {
+            String word = "";
+            for (int j = i; j < i + 7; j++) {
+                word = word + lowerMessage.charAt(j);
+            }
+            if (word.equals("destroy")) {
+                hasDestroy = true;
+            }
+        }
+
+        if (hasClose) {
+            sentiment = "Fan expect a close match";
+        } else if (hasDestroy) {
+            sentiment = "Fan expects a dominating victory!";
+        } else {
+            sentiment = "Hard to read the fan sentiment";
+        }
+
+        System.out.println(supporter);
+        System.out.println(sentiment);
+
+        sc.close();
+    }
+}
+
+
+================================================================================================================================================================
+
+
++--------------------+
+|                    |
+|       Task 5       |
+|                    |
++--------------------+
+
+import java.util.*;
+
+public class Task5 {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        String input = sc.nextLine();
+
+        int lastWordLength = 0;
+        boolean inWord = false;
+
+        for (int i = input.length() - 1; i >= 0; i--) {
+            char ch = input.charAt(i);
+
+            if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
+                lastWordLength++;
+                inWord = true;
+            } else if (ch == ' ') {
+                if (inWord) {
+                    break;
+                }
+            }
+        }
+
+        System.out.println(lastWordLength);
+
+        sc.close();
+    }
+}
+
+
+
+================================================================================================================================================================
