@@ -13,13 +13,13 @@ When both username and password are valid, display "Account creation successful"
 
 **Sample Input & Output:**
 
-| Sample Input | Sample Output |
-|--------------|---------------|
-| Enter a username<br>john123<br>Give an 8 character password<br>pass1234 | Account creation successful |
-| Enter a username<br>john123 | The username already exists |
-| Enter a username<br>alice456<br>Give an 8 character password<br>short | Password length did not match |
-| Enter a username<br>alice456<br>Give an 8 character password<br>alice890 | Account creation successful |
-| Enter a username<br>bob12345<br>Give an 8 character password<br>secure99 | Account creation successful |
+| Input | Output |
+|-------|--------|
+| Enter a username: john123<br>Give an 8 character password: pass1234 | Account creation successful |
+| Enter a username: john123 | The username already exists |
+| Enter a username: alice456<br>Give an 8 character password: short | Password length did not match |
+| Enter a username: alice456<br>Give an 8 character password: alice890 | Account creation successful |
+| Enter a username: bob12345<br>Give an 8 character password: secure99 | Account creation successful |
 
 **Explanation:**
 
@@ -44,7 +44,7 @@ public class AccountCreationSystem {
         int accountCount = 0;
         
         while (accountCount < 3) {
-            System.out.println("Enter a username");
+            System.out.println("Enter a username:");
             String user = sc.next();
             
             boolean usernameExists = false;
@@ -58,7 +58,7 @@ public class AccountCreationSystem {
             if (usernameExists) {
                 System.out.println("The username already exists");
             } else {
-                System.out.println("Give an 8 character password");
+                System.out.println("Give an 8 character password:");
                 String pass = sc.next();
                 
                 if (pass.length() != 8) {
