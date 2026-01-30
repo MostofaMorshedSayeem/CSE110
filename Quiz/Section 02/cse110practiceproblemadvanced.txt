@@ -1,0 +1,60 @@
+1. Given a String containing numbers and characters then produce the given output in a new String variable. It is your task to determine the pattern.
+   Input = 1A*23P1#2
+   Output = **P##
+
+2. Given a String and an inteteger n, less than the length of the String, you have to rotate right the String n times. Study the output below.
+   Input = ABC, 2 
+   Output = BCA
+
+   Input = 1*2*3, 3
+   Output = 2*31*
+
+3. What is the output of this code?
+
+class Main {
+    static int x = 10;
+    public static void metA(int x){
+        int x = 5;
+        System.out.println(x);
+    }
+    
+    public static void main(String[] args) {
+        metA(100);
+        System.out.println(x);
+    }
+}
+
+4. What is the output of this code?
+
+class Main {
+    static int x = 10;
+    public static int metA(int x){
+        int y = 5;
+        return y + x++;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(++x+metA(100));
+    }
+}
+ Trace the following code and write the output.
+   public class Task1{
+
+	public static void metA(int x){
+		if (x<5){
+			int y = metB(x+1);
+			metA(y);
+		}
+	}
+
+	public int metB(int x){
+		if (x<3){
+			return 1+metB(++x);
+		}
+		return x;
+	}
+
+	public static void main(String[]args){
+		metA(0);
+	}
+}

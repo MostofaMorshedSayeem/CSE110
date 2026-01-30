@@ -1,0 +1,196 @@
+Let us study the code below and try to understand how's it working. 
+
+public class MyClass{
+    int x = 10; 
+    public int metA(){
+        int y = 20;
+    }
+    public void metB(){
+        System.out.println(x); // correct and the output is 10
+        System.out.println(y); // wrong - compile time error
+}
+So far we have always declared a variable inside a method - either main or any other method. Now if you look at the variable x, it is not declared inside any method. These variables belong to the object, which means, not to any particular method. These variables can be accessed from all methods in that class.
+On the other hand, the variable y is declared inside the metA(). y belongs to metA() only and this variable cannot be accessed by any other methods except metA().
+x is an instance variable and y is a local variable.
+
+Task-1:
+
+Find the output of the following program. There are 2 classes - MyClass and the class containing main( ) method.
+
+public class MyClass{
+    int x = 10;
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating an object of MyClass
+        MyClass m = new MyClass();
+        
+        System.out.println(m.x);
+    }
+}
+
+Task-2
+
+Find the output.
+
+public class MyClass{
+    int x = 10;
+    
+    public void metA(){
+        System.out.println(x);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating an object of MyClass
+        MyClass m = new MyClass();
+        m.metA();
+    }
+}
+
+Task-3
+
+Find the output
+
+public class MyClass{
+    int x = 10;
+    
+    public void metA(){
+        int x = 100;
+        System.out.println(x);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating an object of MyClass
+        MyClass m = new MyClass();
+        m.metA();
+        System.out.println(m.x);
+    }
+}
+
+Task-4
+
+Find the output
+
+public class MyClass{
+    int x = 10;
+    
+    public void metA(){
+        int x = 100;
+        System.out.println(x);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating an object of MyClass
+        MyClass m = new MyClass();
+        m.metA();
+        System.out.println(x);
+    }
+}
+
+Task-5
+
+Find the output
+
+public class MyClass{
+    int x = 5;
+    
+    public void metA(){
+        int x = 5;
+        System.out.println(x);
+        metA();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating an object of MyClass
+        MyClass m = new MyClass();
+        m.metA();
+    }
+}
+
+Task-6
+
+Find the output
+
+public class MyClass{
+    int x = 5;
+    
+    public void metA(){
+        int x = 5;
+        System.out.println(metB());
+    }
+    
+    public int metB(){
+        return 2*5;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating an object of MyClass
+        MyClass m = new MyClass();
+        m.metA();
+    }
+}
+        
+Task-7
+
+Find the output
+
+public class MyClass{
+    int x = 5;
+    
+    public void metA(){
+        int x = 5;
+        System.out.println(x+metB());
+        System.out.println(metB()+x);
+    }
+    
+    public int metB(){
+        x = 5+x;
+        return x;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating an object of MyClass
+        MyClass m = new MyClass();
+        m.metA();
+    }
+}
+
+Task-8
+
+Find the output
+
+public class MyClass{
+    int x = 5;
+    
+    public void metA(){
+        
+        System.out.println(x+metB());
+        System.out.println(metB()+x);
+    }
+    
+    public int metB(){
+        x = 5+x;
+        return x;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating an object of MyClass
+        MyClass m = new MyClass();
+        m.metA();
+    }
+}        
